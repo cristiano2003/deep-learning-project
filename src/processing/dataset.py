@@ -22,7 +22,7 @@ class SignMNISTDataset(Dataset):
         self.X = np.array(df.drop(columns=['label']), dtype=np.float32)
         self.X = self.X.reshape(-1,1,28,28)
         self.Y = np.array(df['label'])
-        self.Y = np.expand_dims(self.Y,axis=1)
+        self.Y = self.Y
 
     def __len__(self):
         return len(self.X)
@@ -30,7 +30,7 @@ class SignMNISTDataset(Dataset):
     def __getitem__(self, index):
         if self.transform is not None:
             return self.transform(torch.from_numpy(self.X[index])),\
-                   torch.from_numpy(self.Y[index])
+                   torch.from_numpy(np.array(self.Y[index]))
         else:
             return torch.from_numpy(self.X[index]),\
-                   torch.from_numpy(self.Y[index])
+                   torch.from_numpy(np.array(self.Y[index]))
