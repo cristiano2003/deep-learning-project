@@ -1,15 +1,11 @@
-# Sign language detection
+# Sign Language Detection
 
 ![](img/sign.png)
 
 # Setup
 ```
-git clone git@github.com:datvodinh/sign-language-detection.git
-```
-```
+git clone https://github.com/datvodinh/sign-language-detection.git
 pip install requirements.txt
-```
-```
 unzip data.zip -d data/
 ```
 
