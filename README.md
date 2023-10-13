@@ -1,6 +1,6 @@
 # Sign Language Detection
 
-![](img/sign.png)
+![](data/amer_sign2.png)
 
 # Setup
 ```

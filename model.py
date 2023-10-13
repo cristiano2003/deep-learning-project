@@ -5,7 +5,7 @@ import pytorch_lightning as pl
 import torch
 import torch.nn as nn
 from torchvision import models
-from src.utils.stat import RunningMean
+from statistic import RunningMean
 class CNN(nn.Module):
     def __init__(self):
         super().__init__()
