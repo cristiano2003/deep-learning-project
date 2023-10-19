@@ -6,6 +6,7 @@ import torch
 import torch.nn as nn
 from torchvision import models
 from statistic import RunningMean
+
 class CNN(nn.Module):
     def __init__(self):
         super().__init__()
