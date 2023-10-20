@@ -1,17 +1,18 @@
 # Sign Language Detection
 
-![](amer_sign2.png)
+![Alt text](image.png)
 
 # Setup
 ```
 git clone https://github.com/datvodinh/sign-language-detection.git
-pip install requirements.txt
+%cd sign-language-detection
+pip install -r requirements.txt
 unzip data.zip -d data/
 ```
 
 # Train
 ```
-python train.py -n [MODEL_NAME]
+python train.py -n resnet -bs 32
 ```
 ## Help
 ```

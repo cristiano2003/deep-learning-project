@@ -22,7 +22,7 @@ class CNN(nn.Module):
             nn.Linear(256,64),
             nn.ReLU(),
             nn.Dropout(0.2),
-            nn.Linear(64,26)
+            nn.Linear(64,36)
         )
 
     def forward(self,x):
@@ -47,29 +47,29 @@ class ResNet(nn.Module):
     def __init__(self):
         super().__init__()
         self.model = models.resnet18()
-        self.model.conv1 = nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3, bias=False)
+        self.model.conv1 = nn.Conv2d(1, 64, kernel_size=5, stride=2, padding=2, bias=False)
         self.model.bn1   = nn.BatchNorm2d(64)
         self.model.fc = nn.Sequential(
             nn.Linear(256,64),
             nn.ReLU(),
             nn.Dropout(0.2),
-            nn.Linear(64,26)
+            nn.Linear(64,36)
         )
 
     def forward(self,x):
-        x = self.model.conv1(x)   # B 64 14 14
-        x = self.model.bn1(x)     # B 64 14 14
-        x = self.model.relu(x)    # B 64 14 14
-        x = self.model.maxpool(x) # B 64 7 7
-        x = self.model.layer1(x)  # B 64 7 7
-        x = self.model.layer2(x)  # B 128 4 4
-        x = self.model.layer3(x)  # B 256 2 2
+        x = self.model.conv1(x)   # B 64 50 50
+        x = self.model.bn1(x)     # B 64 50 50
+        x = self.model.relu(x)    # B 64 50 50
+        x = self.model.maxpool(x) # B 64 25 25
+        x = self.model.layer1(x)  # B 64 25 25
+        x = self.model.layer2(x)  # B 128 13 13
+        x = self.model.layer3(x)  # B 256 7 7
         x = self.model.avgpool(x) # B 256 1 1
         x = torch.flatten(x, 1)   # B 256
         x = self.model.fc(x)      # B 26
         return x
     
-class SignMNISTModel(pl.LightningModule):
+class ASLModel(pl.LightningModule):
     def __init__(self,model="resnet",lr=2e-4):
         super().__init__()
         if model == "resnet":
@@ -129,5 +129,5 @@ class SignMNISTModel(pl.LightningModule):
 if __name__ == "__main__":
     res = ResNet()
     cnn = CNN()
-    print(f"ResNet Output Shape: {res(torch.randn(4,1,28,28)).shape}")
-    print(f"CNN Output Shape: {cnn(torch.randn(4,1,28,28)).shape}")
+    print(f"ResNet Output Shape: {res(torch.randn(4,1,100,100)).shape}")
+    print(f"CNN Output Shape: {cnn(torch.randn(4,1,100,100)).shape}")

@@ -163,3 +163,4 @@ wandb
 checkpoints
 test.ipynb
 *.ipynb
+asl_dataset

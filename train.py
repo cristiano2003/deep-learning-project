@@ -9,7 +9,7 @@ import numpy as np
 import random
 from model import *
 from torch.utils.data import DataLoader, random_split
-from dataset import SignMNISTDataset
+from dataset import ASLDataset
 from pytorch_lightning.loggers import WandbLogger
 from pytorch_lightning.callbacks import  ModelCheckpoint, LearningRateMonitor
 from torch.utils.data import DataLoader
@@ -51,11 +51,11 @@ def main():
         logger = None
 
     # DATALOADER
-    train_dataset = SignMNISTDataset("train")
+    train_dataset = ASLDataset("train")
     train_dataset, val_dataset = random_split(dataset   = train_dataset,
                                               lengths   = (0.9,0.1),
                                               generator = torch.Generator().manual_seed(args.seed))
-    test_dataset = SignMNISTDataset("test")
+    test_dataset = ASLDataset("test")
 
     train_loader = DataLoader(dataset   = train_dataset,
                             batch_size  = args.batch_size,
@@ -73,7 +73,7 @@ def main():
                             shuffle     = False)
     
     # MODEL
-    model = SignMNISTModel(model=args.model,lr=args.lr)
+    model = ASLModel(model=args.model,lr=args.lr)
 
     # CALLBACK
     root_path = os.path.join(os.getcwd(),"checkpoints")
