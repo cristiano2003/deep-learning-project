@@ -26,3 +26,9 @@ class ResNet(nn.Module):
         x = torch.flatten(x, 1)   # B 256
         x = self.model.fc(x)      # B 26
         return x
+    
+if __name__ == "__main__":
+    res = ResNet()
+    x = torch.randn(2,1,112,112)
+    y = res(x)
+    print(y.shape)

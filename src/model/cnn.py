@@ -35,3 +35,9 @@ class CNN(nn.Module):
             nn.ReLU(),
             nn.Dropout(0.2)
         )
+
+if __name__ == "__main__":
+    cnn = CNN()
+    x = torch.randn(2,1,112,112)
+    y = cnn(x)
+    print(y.shape)

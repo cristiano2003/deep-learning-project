@@ -16,7 +16,7 @@ class ASLModel(pl.LightningModule):
             self.model = ResNet()
         elif model == "cnn":
             self.model = CNN()
-        elif model == "ViT":
+        elif model == "vit":
             self.model = VisionTransformer()
 
         self.train_loss = RunningMean()
