@@ -3,10 +3,10 @@ import torch.nn as nn
 
 class VisionTransformer(nn.Module):
     def __init__(self,
-                embed_dim   = 256,
+                embed_dim   = 384,
                 num_layers  = 6,
                 img_size    = 112,
-                num_heads   = 4,
+                num_heads   = 6,
                 num_patches = 4,
                 num_classes = 36,
                 dropout     = 0.1):

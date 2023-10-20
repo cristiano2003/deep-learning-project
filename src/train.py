@@ -23,7 +23,7 @@ def main():
                         help='max epoch')
     parser.add_argument('--batch_size','-bs',type=int,default=64,
                         help='batch size')
-    parser.add_argument('--lr','-l',type=float,default=2e-4,
+    parser.add_argument('--lr','-l',type=float,default=1e-4,
                         help='learning rate')
     parser.add_argument('--num_workers','-nw',type=int,default=0,
                         help='number of workers')
@@ -97,7 +97,8 @@ def main():
                          gradient_clip_val   = 0.5,
                          max_epochs          = args.max_epochs,
                          enable_progress_bar = True,
-                         deterministic       = True)
+                         deterministic       = True,
+                         log_every_n_steps   = 1)
     
     # FIT MODEL
     trainer.fit(model             = model,
