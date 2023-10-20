@@ -5,11 +5,9 @@ import argparse
 import pytorch_lightning as pl
 import wandb
 import torch
-import numpy as np
-import random
-from model import *
+from src.model.model import ASLModel
 from torch.utils.data import DataLoader, random_split
-from dataset import ASLDataset
+from src.utils.dataset import ASLDataset
 from pytorch_lightning.loggers import WandbLogger
 from pytorch_lightning.callbacks import  ModelCheckpoint, LearningRateMonitor
 from torch.utils.data import DataLoader

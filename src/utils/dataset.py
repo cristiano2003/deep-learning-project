@@ -6,18 +6,20 @@ from torch.utils.data import Dataset
 from torchvision import transforms as T
 import pandas as pd
 import numpy as np
-import cv2
-
+from PIL import Image
 class ASLDataset(Dataset):
     def __init__(self,type='train'): # train, test
         if type == 'train':
             self.transform = T.Compose([
-                T.ToPILImage('L'),
+                T.Resize((112,112)),
                 T.RandomChoice([T.RandomRotation(degrees=10)],p=[0.3]),
                 T.ToTensor()
             ])
         else:
-            self.transform = None
+            self.transform = self.transform = T.Compose([
+                T.Resize((112,112)),
+                T.ToTensor()
+            ])
 
         self.file_list = []
         labels = []
@@ -32,8 +34,7 @@ class ASLDataset(Dataset):
         return len(self.targets)
     
     def __getitem__(self, index):
-        img = cv2.imread(self.file_list[index])
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        img = Image.open(self.file_list[index]).convert('L')
         if self.transform:
             img = self.transform(img)
         return img, self.targets[index]
