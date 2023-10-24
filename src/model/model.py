@@ -6,9 +6,9 @@ import torch
 import torch.nn as nn
 from torchvision import models
 from utils.statistic import RunningMean
-from model.resnet import ResNet
-from model.cnn import CNN
-from model.ViT import VisionTransformer
+from src.model.resnet import ResNet
+from src.model.cnn import CNN
+from src.model.ViT import VisionTransformer
 class ASLModel(pl.LightningModule):
     def __init__(self,model="resnet",lr=2e-4):
         super().__init__()

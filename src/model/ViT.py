@@ -13,7 +13,7 @@ class VisionTransformer(nn.Module):
         super().__init__()
         assert img_size % num_patches == 0, 'Image size must be divisible by number of patches'
         self.cls_token = nn.Parameter(torch.zeros(1,1,embed_dim))
-        self.pos_embed = nn.Parameter(torch.zeros(1,17,embed_dim))
+        self.pos_embed = nn.Parameter(torch.zeros(1,num_patches**2+1,embed_dim))
         self.linear_embed = nn.Conv2d(in_channels  = 1,
                                       out_channels = embed_dim,
                                       kernel_size  = img_size // num_patches,

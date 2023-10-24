@@ -60,12 +60,12 @@ def main():
                             num_workers = args.num_workers,
                             shuffle     = True)
     
-    val_loader   = DataLoader(dataset     = val_dataset,
+    val_loader   = DataLoader(dataset   = val_dataset,
                             batch_size  = args.batch_size,
                             num_workers = 0,
                             shuffle     = False)
     
-    test_loader  = DataLoader(dataset    = test_dataset,
+    test_loader  = DataLoader(dataset   = test_dataset,
                             batch_size  = args.batch_size,
                             num_workers = 0,
                             shuffle     = False)
