@@ -1,23 +1,25 @@
+from PIL import Image
+from torchvision import transforms as T
+from torch.utils.data import Dataset
 import os
 import sys
 sys.path.append(os.getcwd())
-import torch
-from torch.utils.data import Dataset
-from torchvision import transforms as T
-import pandas as pd
-import numpy as np
-from PIL import Image
+
+
 class ASLDataset(Dataset):
-    def __init__(self,type='train'): # train, test
+    def __init__(
+        self,
+        type: str = 'train'
+    ):  # train, test
         if type == 'train':
             self.transform = T.Compose([
-                T.Resize((112,112)),
-                T.RandomChoice([T.RandomRotation(degrees=10)],p=[0.3]),
+                T.Resize((112, 112)),
+                T.RandomChoice([T.RandomRotation(degrees=10)], p=[0.3]),
                 T.ToTensor()
             ])
         else:
             self.transform = self.transform = T.Compose([
-                T.Resize((112,112)),
+                T.Resize((112, 112)),
                 T.ToTensor()
             ])
 
@@ -32,7 +34,7 @@ class ASLDataset(Dataset):
 
     def __len__(self):
         return len(self.targets)
-    
+
     def __getitem__(self, index):
         img = Image.open(self.file_list[index]).convert('L')
         if self.transform:

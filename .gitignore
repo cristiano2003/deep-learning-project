@@ -164,3 +164,4 @@ checkpoints
 test.ipynb
 *.ipynb
 asl_dataset
+.vscode
