@@ -5,13 +5,13 @@ import torch.nn as nn
 class VisionTransformer(nn.Module):
     def __init__(
         self,
-        embed_dim=384,
-        num_layers=6,
-        img_size=112,
-        num_heads=6,
-        num_patches=4,
-        num_classes=36,
-        dropout=0.1
+        embed_dim: int = 384,
+        num_layers: int = 6,
+        img_size: int = 112,
+        num_heads: int = 6,
+        num_patches: int = 4,
+        num_classes: int = 36,
+        dropout: float = 0.1
     ):
         super().__init__()
         assert img_size % num_patches == 0, 'Image size must be divisible by number of patches'
