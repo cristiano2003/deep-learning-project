@@ -6,7 +6,7 @@
 
 ```bash
 git clone https://github.com/datvodinh/sign-language-detection.git
-%cd sign-language-detection # IF NOT ALREADY IN
+cd sign-language-detection # IF NOT ALREADY IN
 ```
 
 ## Setup
