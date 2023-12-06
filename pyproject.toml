@@ -1,0 +1,20 @@
+[project]
+name = "dl_project"
+authors = [{name = "datvodinh", email = "vodinhdat03@gmail.com"}]
+version = "0.1.1"
+requires-python = ">=3.9"
+dependencies = [
+    "lightning",
+    "torch",
+    "torchvision",
+    "torchaudio",
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "wandb"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest"
+]

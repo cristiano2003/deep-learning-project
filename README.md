@@ -2,19 +2,27 @@
 
 ![Alt text](img/image.png)
 
-# Setup
-```
+## Clone
+
+```bash
 git clone https://github.com/datvodinh/sign-language-detection.git
-%cd sign-language-detection
-pip install -r requirements.txt
-unzip data.zip -d data/
+%cd sign-language-detection # IF NOT ALREADY IN
 ```
 
-# Train
+## Setup
+
+```bash
+bash ./scripts/setup.sh
 ```
-python train.py -n resnet -bs 32
+
+## Train
+
+```bash
+python -m dl_project.train --model resnet --batch_size 64
 ```
+
 ## Help
-```
-python train.py -h
+
+```bash
+python -m dl_project.train -h
 ```

@@ -1,11 +1,7 @@
-from .ViT import VisionTransformer
-from .cnn import CNN
-from .resnet import ResNet
-from utils.statistic import RunningMean
+import dl_project
 import torch.nn as nn
 import torch
 import pytorch_lightning as pl
-
 
 class ASLModel(pl.LightningModule):
     def __init__(
@@ -15,16 +11,16 @@ class ASLModel(pl.LightningModule):
     ):
         super().__init__()
         if model == "resnet":
-            self.model = ResNet()
+            self.model = dl_project.ResNet()
         elif model == "cnn":
-            self.model = CNN()
+            self.model = dl_project.CNN()
         elif model == "vit":
-            self.model = VisionTransformer()
+            self.model = dl_project.VisionTransformer()
 
-        self.train_loss = RunningMean()
-        self.val_loss = RunningMean()
-        self.train_acc = RunningMean()
-        self.val_acc = RunningMean()
+        self.train_loss = dl_project.RunningMean()
+        self.val_loss = dl_project.RunningMean()
+        self.train_acc = dl_project.RunningMean()
+        self.val_acc = dl_project.RunningMean()
 
         self.loss = nn.CrossEntropyLoss()
         self.lr = lr

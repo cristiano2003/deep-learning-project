@@ -1,8 +1,7 @@
 from pytorch_lightning.callbacks import ModelCheckpoint, LearningRateMonitor
 from pytorch_lightning.loggers import WandbLogger
-from utils.dataset import ASLDataset
 from torch.utils.data import DataLoader, random_split
-from model.model import ASLModel
+import dl_project
 import torch
 import wandb
 import pytorch_lightning as pl
@@ -11,11 +10,10 @@ import os
 
 torch.multiprocessing.set_sharing_strategy('file_system')
 
-
 def main():
     # PARSER
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model', '-m', type=str, default='resnet',
+    parser.add_argument('--model', type=str, default='resnet',
                         help='model name')
     parser.add_argument('--max_epochs', '-me', type=int, default=20,
                         help='max epoch')
@@ -47,11 +45,11 @@ def main():
         logger = None
 
     # DATALOADER
-    train_dataset = ASLDataset("train")
+    train_dataset = dl_project.ASLDataset("train")
     train_dataset, val_dataset = random_split(dataset=train_dataset,
                                               lengths=(0.9, 0.1),
                                               generator=torch.Generator().manual_seed(args.seed))
-    test_dataset = ASLDataset("test")
+    test_dataset = dl_project.ASLDataset("test")
 
     train_loader = DataLoader(dataset=train_dataset,
                               batch_size=args.batch_size,
@@ -69,7 +67,7 @@ def main():
                              shuffle=False)
 
     # MODEL
-    model = ASLModel(model=args.model, lr=args.lr)
+    model = dl_project.ASLModel(model=args.model, lr=args.lr)
 
     # CALLBACK
     root_path = os.path.join(os.getcwd(), "checkpoints")
