@@ -48,6 +48,12 @@ class MobileNetV1(nn.Module):
         self._initialize_weights()
 
     def forward(self, x: Tensor) -> Tensor:
+        out = self._forward_impl(x)
+
+        return out
+
+    # Support torch.script function
+    def _forward_impl(self, x: Tensor) -> Tensor:
         out = self.features(x)
         out = self.avgpool(out)
         out = torch.flatten(out, 1)
