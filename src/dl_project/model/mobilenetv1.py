@@ -10,7 +10,7 @@ class MobileNetV1(nn.Module):
 
     def __init__(
             self,
-            num_classes: int = 1000,
+            num_classes: int = 36,
     ) -> None:
         super(MobileNetV1, self).__init__()
         self.features = nn.Sequential(
