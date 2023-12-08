@@ -16,6 +16,10 @@ class ASLModel(pl.LightningModule):
             self.model = dl_project.CNN()
         elif model == "vit":
             self.model = dl_project.VisionTransformer()
+        elif model == "mobilenetv1":
+            self.model = dl_project.MobileNetV1()
+        elif model == "mobilenetv2":
+            self.model = dl_project.MobileNetV2()
 
         self.train_loss = dl_project.RunningMean()
         self.val_loss = dl_project.RunningMean()
