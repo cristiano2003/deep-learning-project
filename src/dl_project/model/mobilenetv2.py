@@ -1,5 +1,4 @@
 from torch import nn
-from torch.utils import load_state_dict_from_url
 
 
 __all__ = ['MobileNetV2', 'mobilenet_v2']
