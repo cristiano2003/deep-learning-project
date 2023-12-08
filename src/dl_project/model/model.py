@@ -20,6 +20,8 @@ class ASLModel(pl.LightningModule):
             self.model = dl_project.MobileNetV1()
         elif model == "mobilenetv2":
             self.model = dl_project.MobileNetV2()
+        elif model == "swin":
+            self.model = dl_project.SwinTransformerBackbone()
 
         self.train_loss = dl_project.RunningMean()
         self.val_loss = dl_project.RunningMean()
@@ -69,10 +71,3 @@ class ASLModel(pl.LightningModule):
 
     def configure_optimizers(self):
         return torch.optim.Adam(self.parameters(), lr=self.lr)
-
-
-if __name__ == "__main__":
-    res = ResNet()
-    cnn = CNN()
-    print(f"ResNet Output Shape: {res(torch.randn(4,1,100,100)).shape}")
-    print(f"CNN Output Shape: {cnn(torch.randn(4,1,100,100)).shape}")
