@@ -17,7 +17,7 @@ class Permute(nn.Module):
 
 
 class SwinTransformerBackbone(nn.Module):
-    embed_dim = 96
+    embed_dim = 144
     patch_size = [4, 4]
     depths = [2, 6, 2]
     num_heads = [6, 12, 24]
