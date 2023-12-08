@@ -11,7 +11,8 @@ dependencies = [
     "numpy",
     "pandas",
     "matplotlib",
-    "wandb"
+    "wandb",
+    "torchsummary",
 ]
 
 [project.optional-dependencies]
