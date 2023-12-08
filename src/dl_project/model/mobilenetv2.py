@@ -76,7 +76,7 @@ class InvertedResidual(nn.Module):
 
 class MobileNetV2(nn.Module):
     def __init__(self,
-                 num_classes=1000,
+                 num_classes=36,
                  width_mult=1.0,
                  inverted_residual_setting=None,
                  round_nearest=8,
@@ -103,7 +103,7 @@ class MobileNetV2(nn.Module):
         if norm_layer is None:
             norm_layer = nn.BatchNorm2d
 
-        input_channel = 32
+        input_channel = 1
         last_channel = 1280
 
         if inverted_residual_setting is None:
