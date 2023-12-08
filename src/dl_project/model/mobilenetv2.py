@@ -1,12 +1,9 @@
 from torch import nn
-
+from torchsummary import summary
 
 __all__ = ['MobileNetV2', 'mobilenet_v2']
 
 
-model_urls = {
-    'mobilenet_v2': 'https://download.pytorch.org/models/mobilenet_v2-b0353104.pth',
-}
 
 
 def _make_divisible(v, divisor, min_value=None):
@@ -78,7 +75,7 @@ class MobileNetV2(nn.Module):
                  num_classes=36,
                  width_mult=1.0,
                  inverted_residual_setting=None,
-                 round_nearest=8,
+                 round_nearest=1,
                  block=None,
                  norm_layer=None):
         """
@@ -125,7 +122,7 @@ class MobileNetV2(nn.Module):
         # building first layer
         input_channel = _make_divisible(input_channel * width_mult, round_nearest)
         self.last_channel = _make_divisible(last_channel * max(1.0, width_mult), round_nearest)
-        features = [ConvBNReLU(3, input_channel, stride=2, norm_layer=norm_layer)]
+        features = [ConvBNReLU(input_channel, input_channel, stride=2, norm_layer=norm_layer)]
         # building inverted residual blocks
         for t, c, n, s in inverted_residual_setting:
             output_channel = _make_divisible(c * width_mult, round_nearest)
@@ -181,3 +178,8 @@ def mobilenet_v2(pretrained=False, progress=True, **kwargs):
     """
     model = MobileNetV2(**kwargs)
     return model
+
+if __name__=='__main__':
+    # model check
+    model = MobileNetV2()
+    summary(model, input_size=(1, 224, 224), device='cpu')

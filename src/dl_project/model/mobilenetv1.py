@@ -52,5 +52,5 @@ class MobileNetV1(nn.Module):
 
 if __name__=='__main__':
     # model check
-    model = MobileNetV1(ch_in=3, n_classes=1000)
-    summary(model, input_size=(3, 224, 224), device='cpu')
+    model = MobileNetV1(ch_in=1, n_classes=1000)
+    summary(model, input_size=(1, 224, 224), device='cpu')
