@@ -29,6 +29,7 @@ parser.add_argument('--wandb_key', '-wk', type=str,
                     help='wandb API key')
 args = parser.parse_args()
 
+
 def train(args, model_name):
     pl.seed_everything(args.seed, workers=True)
 
@@ -102,6 +103,8 @@ def train(args, model_name):
 
     # TEST MODEL
     trainer.test(dataloaders=test_loader)
+
+    wandb.finish(quiet=True)
 
 
 if __name__ == '__main__':
