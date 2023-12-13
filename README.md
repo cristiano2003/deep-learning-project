@@ -21,6 +21,12 @@ bash ./scripts/setup.sh
 python -m dl_project.train --model resnet --batch_size 64
 ```
 
+### Train all
+
+```bash
+python -m dl_project.train --model all --batch_size 64
+```
+
 ## Help
 
 ```bash

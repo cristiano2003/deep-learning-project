@@ -10,28 +10,26 @@ import os
 
 torch.multiprocessing.set_sharing_strategy('file_system')
 
-def main():
-    # PARSER
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--model', type=str, default='resnet',
-                        help='model name')
-    parser.add_argument('--max_epochs', '-me', type=int, default=20,
-                        help='max epoch')
-    parser.add_argument('--batch_size', '-bs', type=int, default=64,
-                        help='batch size')
-    parser.add_argument('--lr', '-l', type=float, default=1e-4,
-                        help='learning rate')
-    parser.add_argument('--num_workers', '-nw', type=int, default=0,
-                        help='number of workers')
-    parser.add_argument('--seed', '-s', type=int, default=42,
-                        help='seed')
-    parser.add_argument('--wandb', '-w', default=False, action='store_true',
-                        help='use wandb or not')
-    parser.add_argument('--wandb_key', '-wk', type=str,
-                        help='wandb API key')
-    args = parser.parse_args()
+parser = argparse.ArgumentParser()
+parser.add_argument('--model', type=str, default='resnet',
+                    help='model name')
+parser.add_argument('--max_epochs', '-me', type=int, default=20,
+                    help='max epoch')
+parser.add_argument('--batch_size', '-bs', type=int, default=64,
+                    help='batch size')
+parser.add_argument('--lr', '-l', type=float, default=1e-4,
+                    help='learning rate')
+parser.add_argument('--num_workers', '-nw', type=int, default=0,
+                    help='number of workers')
+parser.add_argument('--seed', '-s', type=int, default=42,
+                    help='seed')
+parser.add_argument('--wandb', '-w', default=False, action='store_true',
+                    help='use wandb or not')
+parser.add_argument('--wandb_key', '-wk', type=str,
+                    help='wandb API key')
+args = parser.parse_args()
 
-    # SEED
+def train(args, model_name):
     pl.seed_everything(args.seed, workers=True)
 
     # WANDB (OPTIONAL)
@@ -67,7 +65,7 @@ def main():
                              shuffle=False)
 
     # MODEL
-    model = dl_project.ASLModel(model=args.model, lr=args.lr)
+    model = dl_project.ASLModel(model=model_name, lr=args.lr)
 
     # CALLBACK
     root_path = os.path.join(os.getcwd(), "checkpoints")
@@ -106,4 +104,9 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    if args.model == "all":
+        list_model = ["resnet", "cnn", "vit", "mobilenetv1", "mobilenetv2", "swin"]
+        for model_name in list_model:
+            train(args, model_name)
+    else:
+        train(args, args.model)
