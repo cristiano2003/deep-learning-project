@@ -35,7 +35,7 @@ def train(args, model_name):
     # WANDB (OPTIONAL)
     if args.wandb:
         wandb.login(key=args.wandb_key)  # API KEY
-        name = f"{args.model}-{args.max_epochs}-{args.batch_size}-{args.lr}"
+        name = f"{model_name}-{args.max_epochs}-{args.batch_size}-{args.lr}"
         logger = WandbLogger(project="deep-learning-hust",
                              name=name,
                              log_model="all")
