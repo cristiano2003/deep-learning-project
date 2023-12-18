@@ -12,7 +12,7 @@ cd sign-language-detection # IF NOT ALREADY IN
 ## Setup
 
 ```bash
-bash ./scripts/setup.sh
+source ./scripts/setup.sh
 ```
 
 ## Train
