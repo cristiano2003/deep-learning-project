@@ -2,6 +2,10 @@
 
 ![Alt text](img/image.png)
 
+## Result
+
+![Alt text](img/result.png)
+
 ## Clone
 
 ```bash
