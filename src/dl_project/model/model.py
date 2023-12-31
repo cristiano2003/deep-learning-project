@@ -45,7 +45,6 @@ class ASLModel(pl.LightningModule):
         with torch.no_grad():
             acc = (y_hat.argmax(dim=1) == y).float().mean()
             f1 = float(f1_score(y.cpu(), y_hat.argmax(dim=1).cpu(), average="macro"))
-            print(f"acc: {acc}, f1: {f1}")
         return loss, acc, f1
 
     def training_step(self, batch, batch_idx):
