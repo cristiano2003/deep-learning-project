@@ -79,7 +79,7 @@ def train(args, model_name):
     ckpt_callback = ModelCheckpoint(
         monitor="val_acc",
         dirpath=ckpt_path,
-        filename="checkpoints-{epoch:02d}-{val_acc:.5f}",
+        filename=f"{model_name}",
         save_top_k=1,
         mode="max"
     )  # save top 3 epochs with the lowest validation loss
