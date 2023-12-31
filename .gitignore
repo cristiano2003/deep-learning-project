@@ -166,3 +166,7 @@ test.ipynb
 asl_dataset
 .vscode
 generate
+demo
+.DS_Store
+*.zip
+__MACOSX

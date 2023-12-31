@@ -13,7 +13,7 @@ git clone https://github.com/datvodinh/sign-language-detection.git
 cd sign-language-detection # IF NOT ALREADY IN
 ```
 
-## Setup (Build Package and download Checkpoint)
+## Setup, Build Package and download Checkpoint, Dataset and Demo
 
 ```bash
 source ./scripts/setup.sh
