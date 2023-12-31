@@ -34,7 +34,7 @@ python -m dl_project.train --model all --batch_size 64
 ### Run Demo
 
 ```bash
-python demo/app.py
+python app.py
 ```
 
 ## Help
