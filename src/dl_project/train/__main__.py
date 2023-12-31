@@ -87,7 +87,6 @@ def train(args, model_name):
 
     # TRAINER
     trainer = pl.Trainer(default_root_dir=root_path,
-                         strategy='ddp_find_unused_parameters_true',
                          logger=logger,
                          callbacks=[ckpt_callback, lr_callback],
                          gradient_clip_val=0.5,
