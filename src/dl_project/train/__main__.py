@@ -13,6 +13,8 @@ torch.multiprocessing.set_sharing_strategy('file_system')
 parser = argparse.ArgumentParser()
 parser.add_argument('--model', type=str, default='resnet',
                     help='model name')
+parser.add_argument('--folder', type=str, default='asl_dataset',
+                    help='folder name')
 parser.add_argument('--max_epochs', '-me', type=int, default=20,
                     help='max epoch')
 parser.add_argument('--batch_size', '-bs', type=int, default=64,
@@ -44,7 +46,7 @@ def train(args, model_name):
         logger = None
 
     # DATALOADER
-    train_dataset = dl_project.ASLDataset("train")
+    train_dataset = dl_project.ASLDataset("train", folder=args.folder)
     train_dataset, val_dataset = random_split(dataset=train_dataset,
                                               lengths=(0.9, 0.1),
                                               generator=torch.Generator().manual_seed(args.seed))

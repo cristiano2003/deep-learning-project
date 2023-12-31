@@ -165,3 +165,4 @@ test.ipynb
 *.ipynb
 asl_dataset
 .vscode
+generate
