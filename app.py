@@ -23,7 +23,7 @@ def resize_with_ratio(img, size):
 
 @torch.no_grad()
 def demo():
-    model = ASLModel.load_from_checkpoint("demo/demo.ckpt",
+    model = ASLModel.load_from_checkpoint("./checkpoints/demo/resnet.ckpt",
                                           model="resnet", map_location='cpu')
     model.eval()
     transform = A.Compose([

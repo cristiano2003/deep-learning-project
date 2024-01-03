@@ -31,6 +31,12 @@ python -m dl_project.train --model resnet --batch_size 64
 python -m dl_project.train --model all --batch_size 64
 ```
 
+### Train Demo
+
+```bash
+python -m dl_project.train --model resnet --batch_size 64 --max_epochs 10 --folder generate --name demo
+```
+
 ### Run Demo
 
 ```bash

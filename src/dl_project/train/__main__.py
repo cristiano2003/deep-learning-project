@@ -13,6 +13,8 @@ torch.multiprocessing.set_sharing_strategy('file_system')
 parser = argparse.ArgumentParser()
 parser.add_argument('--model', type=str, default='resnet',
                     help='model name')
+parser.add_argument('--name', type=str, default=None,
+                    help='name of the experiment')
 parser.add_argument('--folder', type=str, default='asl_dataset',
                     help='folder name')
 parser.add_argument('--max_epochs', '-me', type=int, default=20,
@@ -72,7 +74,8 @@ def train(args, model_name):
 
     # CALLBACK
     root_path = os.path.join(os.getcwd(), "checkpoints")
-    ckpt_path = os.path.join(os.path.join(root_path, f"{args.model}/"))
+    model_folder = args.name or args.model
+    ckpt_path = os.path.join(os.path.join(root_path, f"{model_folder}/"))
     if not os.path.exists(root_path):
         os.makedirs(root_path)
     if not os.path.exists(ckpt_path):

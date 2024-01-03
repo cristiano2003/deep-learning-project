@@ -54,7 +54,7 @@ def generate():
                 os.makedirs(f"generate/{folder[f_index]}")
             cv2.imwrite(f"generate/{folder[f_index]}/{time.time()}.jpg", trans_img)
 
-            if counter == 200:
+            if counter == 300:
                 time.sleep(2)
                 counter = 0
                 f_index += 1

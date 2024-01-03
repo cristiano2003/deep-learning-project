@@ -14,7 +14,8 @@ dependencies = [
     "wandb",
     "torchsummary",
     "mediapipe",
-    "cvzone"
+    "cvzone",
+    "albumentations"
 ]
 
 [project.optional-dependencies]
